@@ -27,6 +27,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "description": "Gil's Map"
+  },
+  "android": {
+    "config": {
+      "googleMap": {
+        "apiKey": "IzaSyDZQ8u1LG80wz_cXkCXS-r0x1ojw9XHd0A"
+      }
     }
   }
 }
