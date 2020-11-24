@@ -14,7 +14,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import defaultStyles from "../config/styles";
 import AppText from "./AppText";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
-import Screen from "../components/Screen";
+
 import PickerItem from "./PickerItem";
 
 const height = Dimensions.get("window").height;
