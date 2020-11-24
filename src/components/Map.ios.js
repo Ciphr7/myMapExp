@@ -7,6 +7,7 @@ import {
   View,
   Text,
   Button,
+  Switch
 } from "react-native";
 import {
   TouchableWithoutFeedback,
@@ -18,6 +19,8 @@ import AppTextInput from "./AppTextInput";
 import defaultStyles from "../config/styles";
 import AppButton from "./AppButton";
 import colors from "../config/colors";
+import AppPicker from "./AppPicker"
+import TripPlanner from  './TripPlanner'
 //import CheckBox from "@react-native-community/checkbox";
 
 const height = Dimensions.get("window").height;
@@ -45,11 +48,20 @@ const response = [
     icon: require("../../assets/gil2.jpeg"),
   },
 ];
+const rtMethods = [
+  {label: "Practical", value: 1},
+  {label: "shortest", value: 2},
+  {label: "Interstate", value: 3},
+];
+
 
 const Map = () => {
+
+
   const [spot, setSpot] = useState(null);
   const [visible, setVisible] = useState(false);
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
+  
   return (
     <>
       <MapView
@@ -73,45 +85,8 @@ const Map = () => {
           </MapView.Marker>
         ))}
       </MapView>
-      <View style={styles.cardRT}>
-        <Image style={styles.image2} source={require("../../assets/tm.png")} />
-        <Text style={styles.cupertinoRadio1Lbl}>Use My Location as Origin</Text>
-        <CupertinoRadio1 style={styles.cupertinoRadio1}></CupertinoRadio1>
-        <Text style={styles.titleTrip}>Plan Trip IOS</Text>
-        {/* <CheckBox
-          disabled={false}
-          value={toggleCheckBox}
-          onValueChange={(newValue) => setToggleCheckBox(newValue)}
-        /> */}
-        <AppTextInput
-          autoCapitalize="none"
-          autoCorrect={false}
-          icon="map"
-          // onChangeText={handleChange("password")}
-          placeholder="org ex:19145"
-          secureTextEntry
-          //textContentType="number"
-        ></AppTextInput>
-        <AppTextInput
-          style={styles.input2}
-          autoCapitalize="none"
-          autoCorrect={false}
-          icon="map"
-          // onChangeText={handleChange("password")}
-          placeholder="#2 ex: Hou,TX"
-          secureTextEntry
-          //textContentType="text"
-        ></AppTextInput>
-
-        <TouchableOpacity style={styles.runTripBTN}>
-          <AppButton title="Run Trip" onPress={console.log("button1 tapped")} />
-        </TouchableOpacity>
-
-        <Text style={styles.descriptionPoweredByt}>
-          Powered by ProMiles Software Develpment Corp
-        </Text>
-      </View>
-
+        <TripPlanner></TripPlanner>
+      
       <View style={styles.card}>
         <Text style={styles.title}>TruckMiles M</Text>
         <TouchableOpacity style={styles.startTripBTN}>
@@ -166,27 +141,6 @@ const styles = StyleSheet.create({
     borderEndColor: "tomato",
     borderBottomWidth: 2,
   },
-  cupertinoRadio1: {
-    position: "absolute",
-    marginLeft: 310,
-    height: 31,
-    width: 31,
-    borderWidth: 1,
-    borderColor: "rgba(238,16,16,1)",
-    backgroundColor: "rgba(230, 230, 230,1)",
-    shadowColor: "rgba(0,0,0,1)",
-    shadowOffset: {
-      width: 1,
-      height: 1,
-    },
-    top: 5,
-  },
-  cupertinoRadio1Lbl: {
-    position: "absolute",
-    marginLeft: 200,
-
-    top: 5,
-  },
 
   descriptionPoweredBy: {
     position: "absolute",
@@ -194,28 +148,14 @@ const styles = StyleSheet.create({
     marginTop: 80,
     fontSize: 10,
   },
-  descriptionPoweredByt: {
-    position: "absolute",
-    paddingLeft: 100,
-    marginTop: 330,
-    //paddingTop: 330,
-    fontSize: 10,
-  },
+
   image: {
     height: 60,
     width: 60,
     marginLeft: 15,
     marginTop: -65,
   },
-  image2: {
-    height: 40,
-    width: 40,
-    marginLeft: 5,
-    marginTop: 15,
-  },
-  input2: {
-    margin: 4,
-  },
+
   startTripBTN: {
     width: width - 50,
     paddingLeft: 100,
@@ -230,14 +170,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
   },
-  titleTrip: {
-    position: "absolute",
-    paddingLeft: 65,
-    marginTop: 5,
-    textAlign: "center",
-    fontWeight: "bold",
-    fontSize: 20,
-  },
+  
 });
 
 export default Map;

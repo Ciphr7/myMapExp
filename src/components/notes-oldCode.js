@@ -12,12 +12,13 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
 } from "react-native-gesture-handler";
+import CupertinoRadio1 from "../components/CupertinoRadio1";
 
 import AppTextInput from "./AppTextInput";
 import defaultStyles from "../config/styles";
 import AppButton from "./AppButton";
 import colors from "../config/colors";
-import CheckBox from "@react-native-community/checkbox";
+//import CheckBox from "@react-native-community/checkbox";
 
 const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
@@ -74,12 +75,14 @@ const Map = () => {
       </MapView>
       <View style={styles.cardRT}>
         <Image style={styles.image2} source={require("../../assets/tm.png")} />
-        <Text style={styles.title}>Plan Trip</Text>
-        <CheckBox
+        <Text style={styles.cupertinoRadio1Lbl}>Use My Location as Origin</Text>
+        <CupertinoRadio1 style={styles.cupertinoRadio1}></CupertinoRadio1>
+        <Text style={styles.titleTrip}>Plan Trip</Text>
+        {/* <CheckBox
           disabled={false}
           value={toggleCheckBox}
           onValueChange={(newValue) => setToggleCheckBox(newValue)}
-        />
+        /> */}
         <AppTextInput
           autoCapitalize="none"
           autoCorrect={false}
@@ -163,6 +166,27 @@ const styles = StyleSheet.create({
     borderEndColor: "tomato",
     borderBottomWidth: 2,
   },
+  cupertinoRadio1: {
+    position: "absolute",
+    marginLeft: 310,
+    height: 31,
+    width: 31,
+    borderWidth: 1,
+    borderColor: "rgba(238,16,16,1)",
+    backgroundColor: "rgba(230, 230, 230,1)",
+    shadowColor: "rgba(0,0,0,1)",
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    top: 5,
+  },
+  cupertinoRadio1Lbl: {
+    position: "absolute",
+    marginLeft: 200,
+
+    top: 5,
+  },
 
   descriptionPoweredBy: {
     position: "absolute",
@@ -180,7 +204,7 @@ const styles = StyleSheet.create({
   image: {
     height: 60,
     width: 60,
-    marginLeft: 5,
+    marginLeft: 15,
     marginTop: -65,
   },
   image2: {
@@ -195,7 +219,8 @@ const styles = StyleSheet.create({
   startTripBTN: {
     width: width - 50,
     paddingLeft: 100,
-    marginBottom: 15,
+    //marginBottom: 5,
+    //marginTop: 40,
   },
   title: {
     position: "absolute",
@@ -205,4 +230,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
   },
+  titleTrip: {
+    position: "absolute",
+    paddingLeft: 65,
+    marginTop: 5,
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 20,
+  },
 });
+
+export default Map;
