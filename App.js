@@ -12,7 +12,6 @@ import MapScreen from "./src/screen/MapScreen";
 import WeatherScreen from "./src/screen/Weather";
 import MapListScreen from "./src/screen/MapListScreen";
 import AppButton from "./src/components/AppButton";
-import TripPlanner from "./src/components/TripPlanner"
 
 const mapListFlow = createStackNavigator({
   MapList: MapListScreen,
@@ -28,8 +27,8 @@ mapListFlow.navigationOptions = {
 const switchNavigator = createSwitchNavigator({
   mainFlow: createBottomTabNavigator(
     {
-       Map: MapScreen,
-     // Trip: TripPlanner,
+      Map: MapScreen,
+      // Trip: TripPlanner,
       mapListFlow,
     },
     {

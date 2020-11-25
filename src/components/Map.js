@@ -1,23 +1,8 @@
 import React, { useState, Component } from "react";
 import MapView, { Marker } from "react-native-maps";
-import {
-  Dimensions,
-  StyleSheet,
-  Image,
-  View,
-  Text,
-  Button,
-} from "react-native";
-import {
-  TouchableWithoutFeedback,
-  TouchableOpacity,
-} from "react-native-gesture-handler";
-import CupertinoRadio1 from "../components/CupertinoRadio1";
+import { Dimensions, StyleSheet, Image } from "react-native";
 
-import AppTextInput from "./AppTextInput";
-import defaultStyles from "../config/styles";
-import AppButton from "./AppButton";
-import colors from "../config/colors";
+//import TripPlanner from "./TripPlanner";
 import TripStarter from "./TripStarter";
 //import CheckBox from "@react-native-community/checkbox";
 
@@ -49,8 +34,7 @@ const response = [
 
 const Map = () => {
   const [spot, setSpot] = useState(null);
-  const [visible, setVisible] = useState(false);
-  const [toggleCheckBox, setToggleCheckBox] = useState(false);
+
   return (
     <>
       <MapView
@@ -75,13 +59,7 @@ const Map = () => {
         ))}
       </MapView>
 
-     
-      
-      <TripStarter ></TripStarter>
-
-      
-      
-      
+      <TripStarter></TripStarter>
     </>
   );
 };
@@ -90,14 +68,6 @@ const styles = StyleSheet.create({
   map: {
     height,
   },
-
-  cardAndroid: {
-    backgroundColor: "#fff",
-    height: 400,
-    top : 450,
- 
-  },
- 
 });
 
 export default Map;

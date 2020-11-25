@@ -15,11 +15,11 @@ import {
 } from "react-native-gesture-handler";
 import CupertinoRadio1 from "../components/CupertinoRadio1";
 
-import AppTextInput from "./AppTextInput";
-import defaultStyles from "../config/styles";
-import AppButton from "./AppButton";
-import colors from "../config/colors";
-import AppPicker from "./AppPicker";
+import AppTextInput from "../components/AppTextInput";
+import defaultStyles from "./styles";
+import AppButton from "../components/AppButton";
+import colors from "./colors";
+import AppPicker from "../components/AppPicker";
 //import CheckBox from "@react-native-community/checkbox";
 
 const height = Dimensions.get("window").height;
@@ -43,7 +43,7 @@ const TripPlanner = () => {
           Use My Location as Origin
         </Text>
         <CupertinoRadio1 style={styles.cupertinoRadio1}></CupertinoRadio1>
-        <Text style={styles.titleTrip}>Plan Trip IOS</Text>
+        <Text style={styles.titleTrip}>Plan Trip Android</Text>
 
         <AppTextInput
           style={styles.input3}

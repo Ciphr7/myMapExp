@@ -11,7 +11,7 @@ import {
 } from "react-native";
 
 import { TouchableOpacity } from "react-native-gesture-handler";
-import CupertinoRadio1 from "../components/CupertinoRadio1";
+import CupertinoRadio1 from "./CupertinoRadio1";
 
 import AppTextInput from "./AppTextInput";
 import AppButton from "./AppButton";
@@ -49,7 +49,7 @@ const TripStarter = () => {
               Use My Location as Origin
             </Text>
             <CupertinoRadio1 style={styles.cupertinoRadio1}></CupertinoRadio1>
-            <Text style={styles.titleTrip}>Plan Trip IOS</Text>
+            <Text style={styles.titleTrip}>Plan Trip</Text>
 
             <AppTextInput
               style={styles.input3}
@@ -106,12 +106,12 @@ const TripStarter = () => {
             </Text>
 
             <TouchableHighlight style={styles.runTripBTN}>
-              <AppButton onPress =
-              {() => {
-                setModalVisible(!modalVisible);
-              }}
-
-              title="Run Trip" />
+              <AppButton
+                onPress={() => {
+                  setModalVisible(!modalVisible);
+                }}
+                title="Run Trip"
+              />
             </TouchableHighlight>
           </View>
         </>
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     overflow: "hidden",
     margin: 10,
-    bottom: 270,
+    bottom: 230,
     shadowRadius: 20,
     borderRadius: 10,
     elevation: 20,
@@ -244,14 +244,14 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  
+
   openButton: {
     backgroundColor: "#F194FF",
     borderRadius: 20,
     padding: 10,
     elevation: 2,
   },
-  
+
   runTripBTN: {
     marginLeft: 10,
     width: width - 20,
