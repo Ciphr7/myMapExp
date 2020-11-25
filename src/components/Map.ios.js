@@ -2,7 +2,7 @@ import React, { useState, Component } from "react";
 import MapView, { Marker } from "react-native-maps";
 import { Dimensions, StyleSheet, Image } from "react-native";
 
-import TripPlanner from "./TripPlanner";
+//import TripPlanner from "./TripPlanner";
 import TripStarter from "./TripStarter";
 //import CheckBox from "@react-native-community/checkbox";
 
@@ -58,8 +58,8 @@ const Map = () => {
           </MapView.Marker>
         ))}
       </MapView>
-      {/* <TripPlanner></TripPlanner> */}
       <TripStarter></TripStarter>
+      {/* <TripPlanner></TripPlanner> */}
     </>
   );
 };

@@ -94,7 +94,7 @@ const TripPlanner = () => {
         </Text>
 
         <TouchableOpacity style={styles.runTripBTN}>
-          <AppButton title="Run Trip" onPress={console.log("button1 tapped")} />
+          <AppButton title="Run Trip"  />
         </TouchableOpacity>
       </View>
     </>
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     top: 5,
   },
 
-  descriptionPoweredBy: {
+  descriptionPoweredByTP: {
     position: "absolute",
     paddingLeft: 70,
     //marginBottom: 10,
@@ -152,14 +152,14 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
 
-  image: {
+  imageTP: {
     height: 40,
     width: 40,
     marginLeft: 5,
     marginTop: 15,
   },
 
-  title: {
+  titleTP: {
     position: "absolute",
     paddingLeft: 150,
     marginTop: 5,
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
   },
-  titleTrip: {
+  titleTripTP: {
     position: "absolute",
     paddingLeft: 65,
     marginTop: 5,
