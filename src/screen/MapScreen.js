@@ -3,6 +3,7 @@ import { SafeAreaView } from "react-navigation";
 import Map from "../components/Map";
 import Icon from "react-native-vector-icons/Ionicons";
 
+
 const MapScreen = ({ navigation }) => {
   return (
     <SafeAreaView>

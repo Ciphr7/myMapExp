@@ -10,11 +10,12 @@ import {
   Switch,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import { RadioButton } from "react-native-paper";
+import { RadioButton, Checkbox} from "react-native-paper";
 
 import AppTextInput from "./AppTextInput";
 import AppButton from "./AppButton";
 import AppPicker from "./AppPicker";
+import colors from "../config/colors";
 
 const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
@@ -28,7 +29,7 @@ const rtMethods = [
 const TripStarter = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [rtMethod, setrtMethod] = useState(rtMethods[0]);
-  const [checked, setChecked] = React.useState("first");
+  const [checked, setChecked] = React.useState(false);
   return (
     <>
       <Modal
@@ -45,15 +46,16 @@ const TripStarter = () => {
               style={styles.imageTP}
               source={require("../../assets/tm.png")}
             />
-            <Text numberOfLines={2} style={styles.cupertinoRadio1Lbl}>
+            <Text numberOfLines={2} style={styles.RadioLbl}>
               Use My Location as Origin
             </Text>
             <View style={styles.Radio}>
-              <RadioButton
-              value="first"
-              status={checked === "first" ? "checked" : "unchecked"}
-              onPress={() => setChecked("first")}
-            />
+              <Checkbox 
+                 status={checked ? 'checked' : 'unchecked'}
+                 onPress={() => {
+                   setChecked(!checked);
+                 }}
+              />
             </View>
       
             {/* <CupertinoRadio1 style={styles.cupertinoRadio1}></CupertinoRadio1> */}
@@ -186,11 +188,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     padding: 5,
   },
-  cupertinoRadio1Lbl: {
-    position: "absolute",
-    marginLeft: 200,
-    top: 5,
-  },
   
   descriptionPoweredBy: {
     position: "absolute",
@@ -245,21 +242,19 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 2,
   },
+  RadioLbl: {
+    position: "absolute",
+    marginLeft:135,
+    top: 5,
+    fontSize:15,
+  },
   
   Radio: {
     position: "absolute",
-    marginLeft: 310,
+    marginLeft: 320,
     height: 31,
     width: 31,
-    borderWidth: 1,
-    borderColor: "rgba(238,16,16,1)",
-    backgroundColor: "rgba(230, 230, 230,1)",
-    shadowColor: "rgba(0,0,0,1)",
-    shadowOffset: {
-      width: 1,
-      height: 1,
-    },
-    top: 5,
+    top: 1,
   },
   runTripBTN: {
     marginLeft: 10,
