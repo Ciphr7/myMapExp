@@ -8,7 +8,7 @@ import {
   Button,
   FlatList,
   Dimensions,
-  TouchableHighlight
+  TouchableHighlight,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -21,7 +21,14 @@ import PickerItem from "./PickerItem";
 const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
 
-function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem, ...otherProps }) {
+function AppPicker({
+  icon,
+  items,
+  onSelectItem,
+  placeholder,
+  selectedItem,
+  ...otherProps
+}) {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <React.Fragment>
@@ -35,7 +42,9 @@ function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem, ...ot
               style={styles.icon}
             />
           )}
-          <AppText style={styles.text}>{selectedItem ? selectedItem.label : placeholder}</AppText>
+          <AppText style={styles.text}>
+            {selectedItem ? selectedItem.label : placeholder}
+          </AppText>
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}
@@ -43,22 +52,20 @@ function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem, ...ot
           />
         </View>
       </TouchableHighlight>
-      <Modal visible={modalVisible} animationType="slide">
-        <View  style={styles.card}>
+      <Modal transparent={true} visible={modalVisible} animationType="slide">
+        <View style={styles.card}>
           <Button title="Close" onPress={() => setModalVisible(false)} />
           <FlatList
+            
             data={items}
             keyExtractor={(item) => item.value.toString()}
             renderItem={({ item }) => (
               <PickerItem
                 label={item.label}
                 onPress={() => {
-                 setModalVisible(false);
+                  setModalVisible(false);
                   onSelectItem(item);
-
-                } 
-                
-                }
+                }}
               />
             )}
           />
@@ -71,10 +78,11 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: "tomato",
     height: 300,
-    width: width - 60,
+    width: width - 190,
     position: "absolute",
     overflow: "hidden",
     margin: 10,
+    marginLeft: 170,
     //bottom: 270,
     shadowRadius: 20,
     borderRadius: 10,
@@ -83,9 +91,10 @@ const styles = StyleSheet.create({
     borderEndColor: "tomato",
     borderBottomWidth: 2,
     padding: 5,
-    top: 300,
-    opacity: 0.5,
-},
+    top: 400,
+   // color: "white",
+    //opacity: 0.5,
+  },
   container: {
     backgroundColor: defaultStyles.colors.light,
     borderRadius: 25,
@@ -96,7 +105,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginRight: 0,
-    alignSelf: "flex-start"
+    //alignSelf: "flex-start"
   },
   text: {
     flex: 1,

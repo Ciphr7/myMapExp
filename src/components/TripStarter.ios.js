@@ -257,7 +257,7 @@ const styles = StyleSheet.create({
     width: width - 20,
   },
   startTripBTN: {
-    width: width - 70,
+    width: width - 90,
     // paddingLeft: 100,
     //marginBottom: 5,
     //marginTop: 40,

@@ -68,13 +68,14 @@ const MapListScreen = ({ navigation }) => {
                 <View style={styles.listRow}>
                   <Image style={styles.listImage} source={item.image} />
                   <Text>{item.title}</Text>
+                  </View>
                   <MaterialCommunityIcons
                     style={styles.icon}
                     name="chevron-down"
                     size={20}
                     color={defaultStyles.colors.medium}
                   />
-                </View>
+                
               </TouchableOpacity>
             );
           }}
@@ -102,12 +103,19 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   listRow: {
-    flexDirection: "row",
-    padding: 5,
+   flex: 1,
+   flexDirection: "row",
+  // justifyContent: 'space-between',
   },
   icon: {
-    marginRight: 0,
+    //flex: 1,
+    //marginRight: 0,
     alignSelf: "flex-end",
+  },
+
+  text: {
+    flex: 1,
+    color: "tomato",
   },
 });
 export default MapListScreen;
