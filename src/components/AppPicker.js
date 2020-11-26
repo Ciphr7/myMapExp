@@ -7,7 +7,8 @@ import {
   Modal,
   Button,
   FlatList,
-  Dimensions
+  Dimensions,
+  TouchableHighlight
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -24,7 +25,7 @@ function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem, ...ot
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <React.Fragment>
-      <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
+      <TouchableHighlight onPress={() => setModalVisible(true)}>
         <View style={styles.container}>
           {icon && (
             <MaterialCommunityIcons
@@ -41,7 +42,7 @@ function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem, ...ot
             color={defaultStyles.colors.medium}
           />
         </View>
-      </TouchableWithoutFeedback>
+      </TouchableHighlight>
       <Modal visible={modalVisible} animationType="slide">
         <View  style={styles.card}>
           <Button title="Close" onPress={() => setModalVisible(false)} />
@@ -95,6 +96,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginRight: 0,
+    alignSelf: "flex-start"
   },
   text: {
     flex: 1,

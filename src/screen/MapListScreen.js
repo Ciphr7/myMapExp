@@ -1,5 +1,7 @@
 import React from "react";
 import { SafeAreaView } from "react-navigation";
+
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import {
   Text,
   StyleSheet,
@@ -8,8 +10,10 @@ import {
   View,
   Image,
 } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
+//import Icon from "react-native-vector-icons/Ionicons";
 import { ListItem } from "react-native-elements";
+
+import defaultStyles from "../config/styles";
 
 const response = [
   {
@@ -61,15 +65,16 @@ const MapListScreen = ({ navigation }) => {
                   })
                 }
               >
-                <ListItem
-                  chevron
-                  title={item.title}
-                  leftAvatar={
-                    <View>
-                      <Image style={styles.listImage} source={item.image} />
-                    </View>
-                  }
-                />
+                <View style={styles.listRow}>
+                  <Image style={styles.listImage} source={item.image} />
+                  <Text>{item.title}</Text>
+                  <MaterialCommunityIcons
+                    style={styles.icon}
+                    name="chevron-down"
+                    size={20}
+                    color={defaultStyles.colors.medium}
+                  />
+                </View>
               </TouchableOpacity>
             );
           }}
@@ -94,6 +99,15 @@ const styles = StyleSheet.create({
   listImage: {
     height: 60,
     width: 60,
+    margin: 10,
+  },
+  listRow: {
+    flexDirection: "row",
+    padding: 5,
+  },
+  icon: {
+    marginRight: 0,
+    alignSelf: "flex-end",
   },
 });
 export default MapListScreen;
