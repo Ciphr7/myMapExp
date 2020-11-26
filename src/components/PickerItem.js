@@ -5,8 +5,6 @@ import defaultStyles from "../config/styles";
 
 
 function PickerItem({ label, onPress }) {
-  //const [category, setCategory] = useState();
- //const [rtMethods, setrtMethod] = useState();
 
   return (
     <TouchableOpacity onPress={onPress}>

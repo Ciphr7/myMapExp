@@ -9,13 +9,15 @@ import {
   View,
   Switch,
 } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
 
 import { TouchableOpacity } from "react-native-gesture-handler";
-import CupertinoRadio1 from "./CupertinoRadio1";
+//import CupertinoRadio1 from "./CupertinoRadio1";
 
 import AppTextInput from "./AppTextInput";
 import AppButton from "./AppButton";
 import AppPicker from "./AppPicker";
+import { RadioButton } from "react-native-paper";
 
 const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
@@ -29,6 +31,7 @@ const rtMethods = [
 const TripStarter = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [rtMethod, setrtMethod] = useState(rtMethods[0]);
+  const [checked, setChecked] = React.useState("first");
   return (
     <>
       <Modal
@@ -48,8 +51,14 @@ const TripStarter = () => {
             <Text numberOfLines={2} style={styles.cupertinoRadio1Lbl}>
               Use My Location as Origin
             </Text>
-            <CupertinoRadio1 style={styles.cupertinoRadio1}></CupertinoRadio1>
-            <Text style={styles.titleTrip}>Plan Trip</Text>
+            <RadioButton 
+               style={styles.cupertinoRadio1Lbl}
+               value="first"
+               status={checked === "first" ? "checked" : "unchecked"}
+               onPress={() => setChecked("first")}
+            />
+            {/* <CupertinoRadio1 style={styles.cupertinoRadio1}></CupertinoRadio1>
+            <Text style={styles.titleTrip}>Plan Trip</Text> */}
 
             <AppTextInput
               style={styles.input3}
@@ -119,7 +128,8 @@ const TripStarter = () => {
 
       <View>
         <View style={styles.card}>
-          <Text style={styles.title}>TruckMiles M</Text>
+          <Text style={styles.title}>TruckMiles</Text>
+          <Text style={styles.titleYR}><FontAwesome name="copyright" size={12} color="black" />_2020</Text>
 
           <View style={styles.logoNbtn}>
             <Image
@@ -217,7 +227,7 @@ const styles = StyleSheet.create({
     height: 60,
     width: 60,
     marginHorizontal: 10,
-    marginTop: -15,
+    marginTop: 15,
   },
   imageTP: {
     height: 40,
@@ -227,7 +237,7 @@ const styles = StyleSheet.create({
   },
   logoNbtn: {
     flexDirection: "row",
-    marginTop: 30,
+    marginTop: -30,
   },
   modalView: {
     margin: 20,
@@ -290,6 +300,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
   },
+  titleYR:{
+    marginLeft: 255,
+    marginTop: 13,
+    fontSize: 12,
+  }
+
+
 });
 
 export default TripStarter;

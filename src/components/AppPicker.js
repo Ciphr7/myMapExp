@@ -14,6 +14,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import defaultStyles from "../config/styles";
 import AppText from "./AppText";
+import colors from "../config/colors"
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 import PickerItem from "./PickerItem";
@@ -77,13 +78,13 @@ function AppPicker({
 const styles = StyleSheet.create({
   card: {
     backgroundColor: "tomato",
-    height: 300,
+    height: 250,
     width: width - 190,
     position: "absolute",
     overflow: "hidden",
     margin: 10,
     marginLeft: 170,
-    //bottom: 270,
+    //paddingTop: 35,
     shadowRadius: 20,
     borderRadius: 10,
     elevation: 20,
@@ -91,8 +92,8 @@ const styles = StyleSheet.create({
     borderEndColor: "tomato",
     borderBottomWidth: 2,
     padding: 5,
-    top: 400,
-   // color: "white",
+    top: 300,
+   // color: colors.white,
     //opacity: 0.5,
   },
   container: {
@@ -104,12 +105,12 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   icon: {
-    marginRight: 0,
+    marginRight: 10,
     //alignSelf: "flex-start"
   },
   text: {
     flex: 1,
-    color: "tomato",
+    color: colors.primary,
   },
 });
 export default AppPicker;

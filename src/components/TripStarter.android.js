@@ -9,9 +9,8 @@ import {
   View,
   Switch,
 } from "react-native";
-
-import { TouchableOpacity } from "react-native-gesture-handler";
-import CupertinoRadio1 from "./CupertinoRadio1";
+import { FontAwesome } from "@expo/vector-icons";
+import { RadioButton } from "react-native-paper";
 
 import AppTextInput from "./AppTextInput";
 import AppButton from "./AppButton";
@@ -29,6 +28,7 @@ const rtMethods = [
 const TripStarter = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [rtMethod, setrtMethod] = useState(rtMethods[0]);
+  const [checked, setChecked] = React.useState("first");
   return (
     <>
       <Modal
@@ -48,7 +48,15 @@ const TripStarter = () => {
             <Text numberOfLines={2} style={styles.cupertinoRadio1Lbl}>
               Use My Location as Origin
             </Text>
-            <CupertinoRadio1 style={styles.cupertinoRadio1}></CupertinoRadio1>
+            <View style={styles.Radio}>
+              <RadioButton
+              value="first"
+              status={checked === "first" ? "checked" : "unchecked"}
+              onPress={() => setChecked("first")}
+            />
+            </View>
+      
+            {/* <CupertinoRadio1 style={styles.cupertinoRadio1}></CupertinoRadio1> */}
             <Text style={styles.titleTrip}>Plan Trip Android</Text>
 
             <AppTextInput
@@ -119,8 +127,9 @@ const TripStarter = () => {
 
       <View>
         <View style={styles.card}>
-          <Text style={styles.title}>TruckMiles M</Text>
-
+          <Text style={styles.title}>TruckMiles</Text>
+          
+          <Text style={styles.titleYR}><FontAwesome name="copyright" size={12} color="black" />_2020</Text>
           <View style={styles.logoNbtn}>
             <Image
               style={styles.image}
@@ -163,12 +172,12 @@ const styles = StyleSheet.create({
   },
   cardTP: {
     backgroundColor: "#fff",
-    height: 450,
+    height: 410,
     width: width - 20,
     position: "absolute",
     overflow: "hidden",
     margin: 10,
-    bottom: 210,
+    bottom: 270,
     shadowRadius: 20,
     borderRadius: 10,
     elevation: 20,
@@ -177,27 +186,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     padding: 5,
   },
-  cupertinoRadio1: {
-    position: "absolute",
-    marginLeft: 310,
-    height: 31,
-    width: 31,
-    borderWidth: 1,
-    borderColor: "rgba(238,16,16,1)",
-    backgroundColor: "rgba(230, 230, 230,1)",
-    shadowColor: "rgba(0,0,0,1)",
-    shadowOffset: {
-      width: 1,
-      height: 1,
-    },
-    top: 5,
-  },
   cupertinoRadio1Lbl: {
     position: "absolute",
     marginLeft: 200,
     top: 5,
   },
-
+  
   descriptionPoweredBy: {
     position: "absolute",
     paddingLeft: 100,
@@ -212,7 +206,7 @@ const styles = StyleSheet.create({
     //paddingTop: 330,
     fontSize: 10,
   },
-
+  
   image: {
     height: 60,
     width: 60,
@@ -227,7 +221,7 @@ const styles = StyleSheet.create({
   },
   logoNbtn: {
     flexDirection: "row",
-    marginTop: 30,
+    marginTop: 10,
   },
   modalView: {
     margin: 20,
@@ -244,14 +238,29 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-
+  
   openButton: {
     backgroundColor: "#F194FF",
     borderRadius: 20,
     padding: 10,
     elevation: 2,
   },
-
+  
+  Radio: {
+    position: "absolute",
+    marginLeft: 310,
+    height: 31,
+    width: 31,
+    borderWidth: 1,
+    borderColor: "rgba(238,16,16,1)",
+    backgroundColor: "rgba(230, 230, 230,1)",
+    shadowColor: "rgba(0,0,0,1)",
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    top: 5,
+  },
   runTripBTN: {
     marginLeft: 10,
     width: width - 20,
@@ -290,6 +299,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
   },
+  titleYR:{
+    marginLeft: 253,
+    marginTop: 13,
+    fontSize: 12,
+  }
 });
 
 export default TripStarter;
