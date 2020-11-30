@@ -186,7 +186,7 @@ const TripStarter = () => {
               <AppButton
                 onPress={() => setModalVisible(true)}
                 title="Start Trip"
-                style={styles.startTripBTN}
+                //style={styles.startTripBTN}
                 //onPress={console.log("button tapped")}
               />
             </TouchableHighlight>
@@ -325,7 +325,7 @@ const styles = StyleSheet.create({
     width: width - 90,
     // paddingLeft: 100,
     //marginBottom: 5,
-    marginTop: -40,
+    //marginTop: 40,
   },
   switchRow: {
     height: 35,

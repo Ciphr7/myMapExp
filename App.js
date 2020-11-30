@@ -14,14 +14,15 @@ import MapListScreen from "./src/screen/MapListScreen";
 import AppButton from "./src/components/AppButton";
 import location from "./src/components/Location"
 import Input from "./src/components/Input"
+import TesterComponet from "./src/components/TesterComponent"
 
 const mapListFlow = createStackNavigator({
   //INPUTd: Input,
   MapList: MapListScreen,
-  MapDetail: MapDetailScreen,
+  MapDetail: TesterComponet,
 });
 
-mapListFlow.navigationOptions = {
+TesterComponet.navigationOptions = {
   tabBarIcon: ({ tintColor }) => (
     <Icon name="ios-list" color={tintColor} size={30} />
   ),
@@ -32,8 +33,8 @@ const switchNavigator = createSwitchNavigator({
     {
       //Yo: Input,
       Map: MapScreen,
-     // Trip: TripPlanner,
-      mapListFlow,
+     Test: TesterComponet,
+      //mapListFlow,
     },
     {
       tabBarOptions: {

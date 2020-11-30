@@ -9,7 +9,7 @@ import TripStarter from "./TripStarter";
 const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
 
-const response = [
+const responnse = [
   {
     id: "1",
     coordinates: {
@@ -33,7 +33,7 @@ const response = [
 ];
 
 const Map = () => {
-  const [spot, setSpot] = useState(null);
+  //const [spot, setSpot] = useState(null);
 
   return (
     <>
@@ -48,7 +48,7 @@ const Map = () => {
           longitudeDelta: 1,
         }}
       >
-        {response.map((marker) => (
+        {/* {response.map((marker) => (
           <MapView.Marker
             key={marker.id}
             coordinate={marker.coordinates}
@@ -57,7 +57,7 @@ const Map = () => {
           >
             <Image source={marker.icon} style={{ height: 32, width: 32 }} />
           </MapView.Marker>
-        ))}
+        ))} */}
       </MapView>
 
       <TripStarter></TripStarter>

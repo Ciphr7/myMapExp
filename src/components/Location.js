@@ -6,6 +6,7 @@ import * as Location from "expo-location";
 const location = () => {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+  //const [loc1, myLoc] = useState(null);
 
   useEffect(() => {
     if (Platform.OS === "android" && !Constants.isDevice) {
@@ -19,6 +20,11 @@ const location = () => {
           setErrorMsg("Permission to access location was denied");
         }
 
+        // let location = await Location.getCurrentPositionAsync().then(resp =>{
+        //   const lat = resp.coords.latitude;
+        //   const lng = resp.coords.longitude;
+        //   loc1 = (lat + ':' + lng);
+        // });
         let location = await Location.getCurrentPositionAsync({});
         setLocation(location);
       })();
