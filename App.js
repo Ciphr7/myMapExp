@@ -13,8 +13,10 @@ import WeatherScreen from "./src/screen/Weather";
 import MapListScreen from "./src/screen/MapListScreen";
 import AppButton from "./src/components/AppButton";
 import location from "./src/components/Location"
+import Input from "./src/components/Input"
 
 const mapListFlow = createStackNavigator({
+  //INPUTd: Input,
   MapList: MapListScreen,
   MapDetail: MapDetailScreen,
 });
@@ -28,9 +30,9 @@ mapListFlow.navigationOptions = {
 const switchNavigator = createSwitchNavigator({
   mainFlow: createBottomTabNavigator(
     {
-     // Loc: location,
+      //Yo: Input,
       Map: MapScreen,
-      // Trip: TripPlanner,
+     // Trip: TripPlanner,
       mapListFlow,
     },
     {
@@ -53,3 +55,5 @@ export default () => {
     />
   );
 };
+<script src="https://prime.promiles.com/WebAPI/Scripts/PRIME/PRIMEWebAPI.ashx?apikey=Nm1FY1FtQ2ZMeWoySU5oeElyMnY2Zz090">
+</script>

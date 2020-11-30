@@ -18,6 +18,10 @@ import AppTextInput from "./AppTextInput";
 import AppButton from "./AppButton";
 import AppPicker from "./AppPicker";
 import { RadioButton } from "react-native-paper";
+import colors from "../config/colors";
+import { Colors } from "react-native/Libraries/NewAppScreen";
+import Main from "./Main"
+import useLocation from "../hooks/useLocation";
 
 const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
@@ -28,18 +32,44 @@ const rtMethods = [
   { label: "Interstate", value: 3 },
 ];
 
+
 const TripStarter = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [rtMethod, setrtMethod] = useState(rtMethods[0]);
-  const [checked, setChecked] = React.useState("first");
+  // const [checked, setChecked] = React.useState("first");
+  const [checked, setChecked] = React.useState(false);
+ // const location = useLocation();
+  
+
+  
   return (
+  function setOrg(){
+        
+    const loc1 = !this.loc1;
+    
+    if (!this.loc1) {
+      
+      this.loc1=("")
+    } else this.loadUserPosition()
+  },
+  
+  function loadUserPosition(){
+    this.plt.ready().then(() => {
+      this.geolocation.getCurrentPosition().then(resp => {
+        const lat = resp.coords.latitude;
+        const lng = resp.coords.longitude;
+        this.loc1 = (lat + ':' + lng); 
+      });
+    });
+  },
     <>
       <Modal
-        animationType="slide"
+        animationType="fade"
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
           Alert.alert("Modal has been closed.");
+          <Text>{JSON.stringify(this.state.useLocation)}</Text>
         }}
       >
         <>
@@ -51,25 +81,36 @@ const TripStarter = () => {
             <Text numberOfLines={2} style={styles.cupertinoRadio1Lbl}>
               Use My Location as Origin
             </Text>
-            <RadioButton 
-               style={styles.cupertinoRadio1Lbl}
-               value="first"
-               status={checked === "first" ? "checked" : "unchecked"}
-               onPress={() => setChecked("first")}
-            />
+            <View style={styles.Radio}>
+              {/* <RadioButton
+                value="first"
+                status={checked === "first" ? "checked" : "unchecked"}
+                onPress={() => setChecked("first")}
+              /> */}
+              <RadioButton
+                value="RadioBTN"
+                color= {colors.white}
+                status={checked ? "checked" : "unchecked"}
+                onPress={() => setChecked(!checked)}  
+              />
+            </View>
             {/* <CupertinoRadio1 style={styles.cupertinoRadio1}></CupertinoRadio1>
             <Text style={styles.titleTrip}>Plan Trip</Text> */}
 
             <AppTextInput
+              name = "input1"
               style={styles.input3}
               autoCapitalize="none"
               autoCorrect={false}
               icon="map"
+             // value = {loc}
               // onChangeText={handleChange("password")}
               placeholder="org ex:19145"
-              secureTextEntry
+              //secureTextEntry
               //textContentType="number"
             ></AppTextInput>
+            <View>
+            </View>
             <AppTextInput
               style={styles.input3}
               autoCapitalize="none"
@@ -77,7 +118,7 @@ const TripStarter = () => {
               icon="map"
               // onChangeText={handleChange("password")}
               placeholder="#2 ex: Hou,TX"
-              secureTextEntry
+              //secureTextEntry
               //textContentType="text"
             ></AppTextInput>
 
@@ -110,6 +151,7 @@ const TripStarter = () => {
               icon="apps"
               placeholder="Route Method"
             ></AppPicker>
+            
             <Text style={styles.descriptionPoweredByTP}>
               Powered by ProMiles Software Develpment Corp
             </Text>
@@ -129,7 +171,10 @@ const TripStarter = () => {
       <View>
         <View style={styles.card}>
           <Text style={styles.title}>TruckMiles</Text>
-          <Text style={styles.titleYR}><FontAwesome name="copyright" size={12} color="black" />_2020</Text>
+          <Text style={styles.titleYR}>
+            <FontAwesome name="copyright" size={12} color="black" />
+            _2020
+          </Text>
 
           <View style={styles.logoNbtn}>
             <Image
@@ -204,7 +249,7 @@ const styles = StyleSheet.create({
   },
   cupertinoRadio1Lbl: {
     position: "absolute",
-    marginLeft: 200,
+    marginLeft: 100,
     top: 5,
   },
 
@@ -227,7 +272,7 @@ const styles = StyleSheet.create({
     height: 60,
     width: 60,
     marginHorizontal: 10,
-    marginTop: 15,
+    marginTop: -15,
   },
   imageTP: {
     height: 40,
@@ -237,7 +282,7 @@ const styles = StyleSheet.create({
   },
   logoNbtn: {
     flexDirection: "row",
-    marginTop: -30,
+    marginTop: 10,
   },
   modalView: {
     margin: 20,
@@ -260,6 +305,16 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     elevation: 2,
+  },
+
+  Radio: {
+    backgroundColor: colors.primary,
+    position: "absolute",
+    marginLeft: 300,
+    height: 31,
+    width: 31,
+    top: 5,
+    borderRadius: 20,
   },
 
   runTripBTN: {
@@ -300,13 +355,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
   },
-  titleYR:{
+  titleYR: {
     marginLeft: 255,
     marginTop: 13,
     fontSize: 12,
-  }
-
-
+  },
 });
 
 export default TripStarter;

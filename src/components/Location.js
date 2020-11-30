@@ -33,7 +33,7 @@ const location = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={styles.conthainer}>
       <Text style={styles.paragraph}>{text}</Text>
     </View>
   );

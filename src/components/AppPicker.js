@@ -9,12 +9,13 @@ import {
   FlatList,
   Dimensions,
   TouchableHighlight,
+  Text,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import AppButton from "./AppButton";
+//import defaultStyles from "../config/styles";
 
-import defaultStyles from "../config/styles";
-import AppText from "./AppText";
-import colors from "../config/colors"
+import colors from "../config/colors";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 import PickerItem from "./PickerItem";
@@ -33,35 +34,41 @@ function AppPicker({
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <React.Fragment>
-      <TouchableHighlight onPress={() => setModalVisible(true)}>
+      <TouchableHighlight underlayColor={colors.light} onPress={() => setModalVisible(true)}>
         <View style={styles.container}>
           {icon && (
             <MaterialCommunityIcons
               name={icon}
               size={20}
-              color={defaultStyles.colors.medium}
+              color={colors.medium}
               style={styles.icon}
             />
           )}
-          <AppText style={styles.text}>
+          <Text style={styles.text}>
             {selectedItem ? selectedItem.label : placeholder}
-          </AppText>
+          </Text>
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}
-            color={defaultStyles.colors.medium}
+            color={colors.medium}
           />
         </View>
-      </TouchableHighlight>
+      </TouchableHighlight >
       <Modal transparent={true} visible={modalVisible} animationType="slide">
         <View style={styles.card}>
-          <Button title="Close" onPress={() => setModalVisible(false)} />
+          <View color={colors.black}>
+            <AppButton
+              
+              title="Close"
+              onPress={() => setModalVisible(false)}
+            />
+          </View>
           <FlatList
-            
             data={items}
             keyExtractor={(item) => item.value.toString()}
             renderItem={({ item }) => (
               <PickerItem
+                style={styles.card}
                 label={item.label}
                 onPress={() => {
                   setModalVisible(false);
@@ -77,7 +84,7 @@ function AppPicker({
 }
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: "tomato",
+    backgroundColor: colors.light,
     height: 250,
     width: width - 190,
     position: "absolute",
@@ -93,11 +100,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     padding: 5,
     top: 300,
-   // color: colors.white,
+
+    //color: colors.white,
     //opacity: 0.5,
   },
   container: {
-    backgroundColor: defaultStyles.colors.light,
+    // backgroundColor: defaultStyles.colors.light,
     borderRadius: 25,
     flexDirection: "row",
     width: "100%",

@@ -40,6 +40,7 @@ const Map = () => {
       <MapView
         style={styles.map}
         loadingEnabled={true}
+        showsUserLocation={true}
         region={{
           latitude: 12.769,
           longitude: -85.6024,

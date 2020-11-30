@@ -8,14 +8,16 @@ import {
   StyleSheet,
   View,
   Switch,
+  // useWindowDimensions
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import { RadioButton, Checkbox} from "react-native-paper";
+import { RadioButton, Checkbox } from "react-native-paper";
 
 import AppTextInput from "./AppTextInput";
 import AppButton from "./AppButton";
 import AppPicker from "./AppPicker";
 import colors from "../config/colors";
+import { color } from "react-native-reanimated";
 
 const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
@@ -30,10 +32,12 @@ const TripStarter = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [rtMethod, setrtMethod] = useState(rtMethods[0]);
   const [checked, setChecked] = React.useState(false);
+  //const window = useWindowDimensions();
   return (
     <>
       <Modal
-        animationType="slide"
+        animationType="fade"
+        // animationType="slide or none"
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
@@ -50,35 +54,36 @@ const TripStarter = () => {
               Use My Location as Origin
             </Text>
             <View style={styles.Radio}>
-              <Checkbox 
-                 status={checked ? 'checked' : 'unchecked'}
-                 onPress={() => {
-                   setChecked(!checked);
-                 }}
+              <RadioButton
+                color={colors.primary}
+                status={checked ? "checked" : "unchecked"}
+                onPress={() => {
+                  setChecked(!checked);
+                }}
               />
             </View>
-      
+
             {/* <CupertinoRadio1 style={styles.cupertinoRadio1}></CupertinoRadio1> */}
             <Text style={styles.titleTrip}>Plan Trip Android</Text>
 
             <AppTextInput
-              style={styles.input3}
+              // style={{minHeight: Math.round(Dimensions.get('window').height) }}
               autoCapitalize="none"
               autoCorrect={false}
               icon="map"
               // onChangeText={handleChange("password")}
               placeholder="org ex:19145"
-              secureTextEntry
+              //secureTextEntry
               //textContentType="number"
             ></AppTextInput>
             <AppTextInput
-              style={styles.input3}
+              // style={{minHeight: Math.round(Dimensions.get('window').height) }}
               autoCapitalize="none"
               autoCorrect={false}
               icon="map"
               // onChangeText={handleChange("password")}
               placeholder="#2 ex: Hou,TX"
-              secureTextEntry
+              // secureTextEntry
               //textContentType="text"
             ></AppTextInput>
 
@@ -130,8 +135,11 @@ const TripStarter = () => {
       <View>
         <View style={styles.card}>
           <Text style={styles.title}>TruckMiles</Text>
-          
-          <Text style={styles.titleYR}><FontAwesome name="copyright" size={12} color="black" />_2020</Text>
+
+          <Text style={styles.titleYR}>
+            <FontAwesome name="copyright" size={12} color="black" />
+            _2020
+          </Text>
           <View style={styles.logoNbtn}>
             <Image
               style={styles.image}
@@ -173,13 +181,15 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
   },
   cardTP: {
+    //flex:1,
     backgroundColor: "#fff",
     height: 410,
     width: width - 20,
-    position: "absolute",
-    overflow: "hidden",
+
+    //position: "absolute",
+    //overflow: "hidden",
     margin: 10,
-    bottom: 270,
+    bottom: 0,
     shadowRadius: 20,
     borderRadius: 10,
     elevation: 20,
@@ -188,7 +198,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     padding: 5,
   },
-  
+
   descriptionPoweredBy: {
     position: "absolute",
     paddingLeft: 100,
@@ -203,7 +213,7 @@ const styles = StyleSheet.create({
     //paddingTop: 330,
     fontSize: 10,
   },
-  
+
   image: {
     height: 60,
     width: 60,
@@ -235,7 +245,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  
+
   openButton: {
     backgroundColor: "#F194FF",
     borderRadius: 20,
@@ -244,11 +254,11 @@ const styles = StyleSheet.create({
   },
   RadioLbl: {
     position: "absolute",
-    marginLeft:135,
+    marginLeft: 135,
     top: 5,
-    fontSize:15,
+    fontSize: 15,
   },
-  
+
   Radio: {
     position: "absolute",
     marginLeft: 320,
@@ -294,11 +304,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
   },
-  titleYR:{
+  titleYR: {
     marginLeft: 253,
     marginTop: 13,
     fontSize: 12,
-  }
+  },
 });
 
 export default TripStarter;

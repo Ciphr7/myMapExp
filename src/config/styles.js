@@ -4,10 +4,10 @@ import colors from "./colors";
 export default {
   colors,
   text: {
-    //color: colors.danger,
+    //color: colors.white,
     fontSize: 18,
     fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
-    // flex: 1,
-    // padding: 20,
+    //flex: 1,
+    //padding:Platform.OS === "android" ? 20 : 0,
   },
 };
