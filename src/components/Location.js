@@ -20,11 +20,6 @@ const location = () => {
           setErrorMsg("Permission to access location was denied");
         }
 
-        // let location = await Location.getCurrentPositionAsync().then(resp =>{
-        //   const lat = resp.coords.latitude;
-        //   const lng = resp.coords.longitude;
-        //   loc1 = (lat + ':' + lng);
-        // });
         let location = await Location.getCurrentPositionAsync({});
         setLocation(location);
       })();
@@ -35,7 +30,9 @@ const location = () => {
   if (errorMsg) {
     text = errorMsg;
   } else if (location) {
-    text = JSON.stringify(location);
+    text = JSON.stringify(
+      location.coords.latitude + ":" + location.coords.longitude
+    );
   }
 
   return (

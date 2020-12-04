@@ -20,7 +20,7 @@ import AppPicker from "./AppPicker";
 import { RadioButton } from "react-native-paper";
 import colors from "../config/colors";
 import { Colors } from "react-native/Libraries/NewAppScreen";
-import Main from "./Main"
+import Main from "./Main";
 import useLocation from "../hooks/useLocation";
 
 const height = Dimensions.get("window").height;
@@ -32,171 +32,157 @@ const rtMethods = [
   { label: "Interstate", value: 3 },
 ];
 
-
 const TripStarter = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [rtMethod, setrtMethod] = useState(rtMethods[0]);
   // const [checked, setChecked] = React.useState("first");
   const [checked, setChecked] = React.useState(false);
- // const location = useLocation();
-  
+  // const location = useLocation();
 
-  
   return (
-  function setOrg(){
-        
-    const loc1 = !this.loc1;
-    
-    if (!this.loc1) {
-      
-      this.loc1=("")
-    } else this.loadUserPosition()
-  },
-  
-  function loadUserPosition(){
-    this.plt.ready().then(() => {
-      this.geolocation.getCurrentPosition().then(resp => {
-        const lat = resp.coords.latitude;
-        const lng = resp.coords.longitude;
-        this.loc1 = (lat + ':' + lng); 
-      });
-    });
-  },
-    <>
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-          <Text>{JSON.stringify(this.state.useLocation)}</Text>
-        }}
-      >
-        <>
-          <View style={styles.cardTP}>
-            <Image
-              style={styles.imageTP}
-              source={require("../../assets/tm.png")}
-            />
-            <Text numberOfLines={2} style={styles.cupertinoRadio1Lbl}>
-              Use My Location as Origin
-            </Text>
-            <View style={styles.Radio}>
-              {/* <RadioButton
+    function setOrg() {
+      const loc1 = !this.loc1;
+
+      if (!this.loc1) {
+        this.loc1 = "";
+      } else this.loadUserPosition();
+    },
+    (
+      <>
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            <Text>{JSON.stringify(this.state.useLocation)}</Text>;
+          }}
+        >
+          <>
+            <View style={styles.cardTP}>
+              <Image
+                style={styles.imageTP}
+                source={require("../../assets/tm.png")}
+              />
+              <Text numberOfLines={2} style={styles.cupertinoRadio1Lbl}>
+                Use My Location as Origin
+              </Text>
+              <View style={styles.Radio}>
+                {/* <RadioButton
                 value="first"
                 status={checked === "first" ? "checked" : "unchecked"}
                 onPress={() => setChecked("first")}
               /> */}
-              <RadioButton
-                value="RadioBTN"
-                color= {colors.white}
-                status={checked ? "checked" : "unchecked"}
-                onPress={() => setChecked(!checked)}  
-              />
-            </View>
-            {/* <CupertinoRadio1 style={styles.cupertinoRadio1}></CupertinoRadio1>
+                <RadioButton
+                  value="RadioBTN"
+                  color={colors.white}
+                  status={checked ? "checked" : "unchecked"}
+                  onPress={() => setChecked(!checked)}
+                />
+              </View>
+              {/* <CupertinoRadio1 style={styles.cupertinoRadio1}></CupertinoRadio1>
             <Text style={styles.titleTrip}>Plan Trip</Text> */}
 
-            <AppTextInput
-              name = "input1"
-              style={styles.input3}
-              autoCapitalize="none"
-              autoCorrect={false}
-              icon="map"
-             // value = {loc}
-              // onChangeText={handleChange("password")}
-              placeholder="org ex:19145"
-              //secureTextEntry
-              //textContentType="number"
-            ></AppTextInput>
-            <View>
+              <AppTextInput
+                name="input1"
+                style={styles.input3}
+                autoCapitalize="none"
+                autoCorrect={false}
+                icon="map"
+                // value = {loc}
+                // onChangeText={handleChange("password")}
+                placeholder="org ex:19145"
+                //secureTextEntry
+                //textContentType="number"
+              ></AppTextInput>
+              <View></View>
+              <AppTextInput
+                style={styles.input3}
+                autoCapitalize="none"
+                autoCorrect={false}
+                icon="map"
+                // onChangeText={handleChange("password")}
+                placeholder="#2 ex: Hou,TX"
+                //secureTextEntry
+                //textContentType="text"
+              ></AppTextInput>
+
+              <View style={styles.switchRow}>
+                <Switch
+                  value={false}
+                  trackColor={{
+                    true: "rgba(227,45,45,1)",
+                    false: "rgba(0,0,0,7)",
+                  }}
+                  style={styles.switch1}
+                ></Switch>
+                <Text>Avoid Tolls</Text>
+
+                <Switch
+                  value={true}
+                  trackColor={{
+                    true: "rgba(227,45,45,1)",
+                    false: "rgba(0,0,0,1)",
+                  }}
+                  style={styles.switch1}
+                ></Switch>
+                <Text>Close Border</Text>
+              </View>
+
+              <AppPicker
+                selectedItem={rtMethod}
+                onSelectItem={(item) => setrtMethod(item)}
+                items={rtMethods}
+                icon="apps"
+                placeholder="Route Method"
+              ></AppPicker>
+
+              <Text style={styles.descriptionPoweredByTP}>
+                Powered by ProMiles Software Develpment Corp
+              </Text>
+
+              <TouchableHighlight style={styles.runTripBTN}>
+                <AppButton
+                  onPress={() => {
+                    setModalVisible(!modalVisible);
+                  }}
+                  title="Run Trip"
+                />
+              </TouchableHighlight>
             </View>
-            <AppTextInput
-              style={styles.input3}
-              autoCapitalize="none"
-              autoCorrect={false}
-              icon="map"
-              // onChangeText={handleChange("password")}
-              placeholder="#2 ex: Hou,TX"
-              //secureTextEntry
-              //textContentType="text"
-            ></AppTextInput>
+          </>
+        </Modal>
 
-            <View style={styles.switchRow}>
-              <Switch
-                value={false}
-                trackColor={{
-                  true: "rgba(227,45,45,1)",
-                  false: "rgba(0,0,0,7)",
-                }}
-                style={styles.switch1}
-              ></Switch>
-              <Text>Avoid Tolls</Text>
-
-              <Switch
-                value={true}
-                trackColor={{
-                  true: "rgba(227,45,45,1)",
-                  false: "rgba(0,0,0,1)",
-                }}
-                style={styles.switch1}
-              ></Switch>
-              <Text>Close Border</Text>
-            </View>
-
-            <AppPicker
-              selectedItem={rtMethod}
-              onSelectItem={(item) => setrtMethod(item)}
-              items={rtMethods}
-              icon="apps"
-              placeholder="Route Method"
-            ></AppPicker>
-            
-            <Text style={styles.descriptionPoweredByTP}>
-              Powered by ProMiles Software Develpment Corp
+        <View>
+          <View style={styles.card}>
+            <Text style={styles.title}>TruckMiles</Text>
+            <Text style={styles.titleYR}>
+              <FontAwesome name="copyright" size={12} color="black" />
+              _2020
             </Text>
 
-            <TouchableHighlight style={styles.runTripBTN}>
-              <AppButton
-                onPress={() => {
-                  setModalVisible(!modalVisible);
-                }}
-                title="Run Trip"
+            <View style={styles.logoNbtn}>
+              <Image
+                style={styles.image}
+                source={require("../../assets/tm.png")}
               />
-            </TouchableHighlight>
+
+              <TouchableHighlight style={styles.startTripBTN}>
+                <AppButton
+                  onPress={() => setModalVisible(true)}
+                  title="Start Trip"
+                  style={styles.startTripBTN}
+                  //onPress={console.log("button tapped")}
+                />
+              </TouchableHighlight>
+            </View>
+            <Text style={styles.descriptionPoweredBy}>
+              Powered by ProMiles Software Develpment Corp
+            </Text>
           </View>
-        </>
-      </Modal>
-
-      <View>
-        <View style={styles.card}>
-          <Text style={styles.title}>TruckMiles</Text>
-          <Text style={styles.titleYR}>
-            <FontAwesome name="copyright" size={12} color="black" />
-            _2020
-          </Text>
-
-          <View style={styles.logoNbtn}>
-            <Image
-              style={styles.image}
-              source={require("../../assets/tm.png")}
-            />
-
-            <TouchableHighlight style={styles.startTripBTN}>
-              <AppButton
-                onPress={() => setModalVisible(true)}
-                title="Start Trip"
-                style={styles.startTripBTN}
-                //onPress={console.log("button tapped")}
-              />
-            </TouchableHighlight>
-          </View>
-          <Text style={styles.descriptionPoweredBy}>
-            Powered by ProMiles Software Develpment Corp
-          </Text>
         </View>
-      </View>
-    </>
+      </>
+    )
   );
 };
 

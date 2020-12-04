@@ -12,17 +12,18 @@ import MapScreen from "./src/screen/MapScreen";
 import WeatherScreen from "./src/screen/Weather";
 import MapListScreen from "./src/screen/MapListScreen";
 import AppButton from "./src/components/AppButton";
-import location from "./src/components/Location"
-import Input from "./src/components/Input"
-import TesterComponet from "./src/components/TesterComponent"
+import location from "./src/components/Location";
+import Input from "./src/components/Input";
+import TsComponet from "./src/components/TsComponent";
+import TesterComponent from "./src/components/TesterComponent";
 
 const mapListFlow = createStackNavigator({
   //INPUTd: Input,
   MapList: MapListScreen,
-  MapDetail: TesterComponet,
+  MapDetail: TesterComponent,
 });
 
-TesterComponet.navigationOptions = {
+TesterComponent.navigationOptions = {
   tabBarIcon: ({ tintColor }) => (
     <Icon name="ios-list" color={tintColor} size={30} />
   ),
@@ -33,7 +34,7 @@ const switchNavigator = createSwitchNavigator({
     {
       //Yo: Input,
       Map: MapScreen,
-     Test: TesterComponet,
+      Test: TesterComponent,
       //mapListFlow,
     },
     {
@@ -56,5 +57,4 @@ export default () => {
     />
   );
 };
-<script src="https://prime.promiles.com/WebAPI/Scripts/PRIME/PRIMEWebAPI.ashx?apikey=Nm1FY1FtQ2ZMeWoySU5oeElyMnY2Zz090">
-</script>
+<script src="https://prime.promiles.com/WebAPI/Scripts/PRIME/PRIMEWebAPI.ashx?apikey=Nm1FY1FtQ2ZMeWoySU5oeElyMnY2Zz090"></script>;
