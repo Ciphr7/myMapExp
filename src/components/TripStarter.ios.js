@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Dimensions,
   Image,
@@ -39,14 +39,13 @@ const TripStarter = () => {
   const [checked, setChecked] = React.useState(false);
   // const location = useLocation();
 
-  return (
-    function setOrg() {
-      const loc1 = !this.loc1;
+  useEffect(() => {
+    //getLocation();
+  }, []);
 
-      if (!this.loc1) {
-        this.loc1 = "";
-      } else this.loadUserPosition();
-    },
+
+  return (
+ 
     (
       <>
         <Modal

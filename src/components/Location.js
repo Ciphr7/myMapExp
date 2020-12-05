@@ -30,9 +30,8 @@ const location = () => {
   if (errorMsg) {
     text = errorMsg;
   } else if (location) {
-    text = JSON.stringify(
-      location.coords.latitude + ":" + location.coords.longitude
-    );
+    text = location.coords.latitude + ":" + location.coords.longitude
+    
   }
 
   return (

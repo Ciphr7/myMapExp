@@ -3,28 +3,31 @@ import React, { Component } from "react";
 import { StyleSheet, View, Button, Platform, Text } from "react-native";
 
 import Location from "./Location";
+//import useLocation from "../hooks/useLocation";
 
 export default class TesterComponent extends Component {
   constructor() {
     super();
-
+    
     this.state = {
       TextHolder: "This is Old Sample Text",
     };
   }
-
+  
   ChangeTextFunction = () => {
     this.setState({
       TextHolder: <Location />,
     });
   };
-
+  
   render() {
+  //  const Location = useLocation();
     return (
       <View style={styles.MainContainer}>
         <Text style={{ marginBottom: 20, fontSize: 20 }}>
           {" "}
-          {this.state.TextHolder}{" "}
+          {this.state.TextHolder}
+          {" "}
         </Text>
 
         <Button
