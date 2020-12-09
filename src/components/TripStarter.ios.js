@@ -17,14 +17,18 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import AppTextInput from "./AppTextInput";
 import AppButton from "./AppButton";
 import AppPicker from "./AppPicker";
-import { RadioButton } from "react-native-paper";
+import { Checkbox } from "react-native-paper";
 import colors from "../config/colors";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import Main from "./Main";
 import useLocation from "../hooks/useLocation";
+import Location from "./Location";
+//import SetGPS from "../components/SetGPS"
+//import setGPS from "../components/SetGPS";
 
 const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
+const setGPS = <Location />
 
 const rtMethods = [
   { label: "Practical", value: 1 },
@@ -36,152 +40,152 @@ const TripStarter = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [rtMethod, setrtMethod] = useState(rtMethods[0]);
   // const [checked, setChecked] = React.useState("first");
-  const [checked, setChecked] = React.useState(false);
+  const [unchecked, setChecked] = React.useState(false);
+  const  settoGPS = React.useState(<Location />)
   // const location = useLocation();
 
-  useEffect(() => {
-    //getLocation();
-  }, []);
-
+  // useEffect(() => {
+  //   //getLocation();
+  //   SetGPS;
+  // }, []);
 
   return (
- 
-    (
-      <>
-        <Modal
-          animationType="fade"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-            <Text>{JSON.stringify(this.state.useLocation)}</Text>;
-          }}
-        >
-          <>
-            <View style={styles.cardTP}>
-              <Image
-                style={styles.imageTP}
-                source={require("../../assets/tm.png")}
-              />
-              <Text numberOfLines={2} style={styles.cupertinoRadio1Lbl}>
-                Use My Location as Origin
-              </Text>
-              <View style={styles.Radio}>
-                {/* <RadioButton
+    <>
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+        }}
+      >
+        <>
+          <View style={styles.cardTP}>
+            <Image
+              style={styles.imageTP}
+              source={require("../../assets/tm.png")}
+            />
+            <Text numberOfLines={2} style={styles.cupertinoRadio1Lbl}>
+              Use My Location as Origin
+            </Text>
+            <View style={styles.Radio}>
+              {/* <RadioButton
                 value="first"
                 status={checked === "first" ? "checked" : "unchecked"}
                 onPress={() => setChecked("first")}
               /> */}
-                <RadioButton
-                  value="RadioBTN"
-                  color={colors.white}
-                  status={checked ? "checked" : "unchecked"}
-                  onPress={() => setChecked(!checked)}
-                />
-              </View>
-              {/* <CupertinoRadio1 style={styles.cupertinoRadio1}></CupertinoRadio1>
-            <Text style={styles.titleTrip}>Plan Trip</Text> */}
-
-              <AppTextInput
-                name="input1"
-                style={styles.input3}
-                autoCapitalize="none"
-                autoCorrect={false}
-                icon="map"
-                // value = {loc}
-                // onChangeText={handleChange("password")}
-                placeholder="org ex:19145"
-                //secureTextEntry
-                //textContentType="number"
-              ></AppTextInput>
-              <View></View>
-              <AppTextInput
-                style={styles.input3}
-                autoCapitalize="none"
-                autoCorrect={false}
-                icon="map"
-                // onChangeText={handleChange("password")}
-                placeholder="#2 ex: Hou,TX"
-                //secureTextEntry
-                //textContentType="text"
-              ></AppTextInput>
-
-              <View style={styles.switchRow}>
-                <Switch
-                  value={false}
-                  trackColor={{
-                    true: "rgba(227,45,45,1)",
-                    false: "rgba(0,0,0,7)",
-                  }}
-                  style={styles.switch1}
-                ></Switch>
-                <Text>Avoid Tolls</Text>
-
-                <Switch
-                  value={true}
-                  trackColor={{
-                    true: "rgba(227,45,45,1)",
-                    false: "rgba(0,0,0,1)",
-                  }}
-                  style={styles.switch1}
-                ></Switch>
-                <Text>Close Border</Text>
-              </View>
-
-              <AppPicker
-                selectedItem={rtMethod}
-                onSelectItem={(item) => setrtMethod(item)}
-                items={rtMethods}
-                icon="apps"
-                placeholder="Route Method"
-              ></AppPicker>
-
-              <Text style={styles.descriptionPoweredByTP}>
-                Powered by ProMiles Software Develpment Corp
-              </Text>
-
-              <TouchableHighlight style={styles.runTripBTN}>
-                <AppButton
-                  onPress={() => {
-                    setModalVisible(!modalVisible);
-                  }}
-                  title="Run Trip"
-                />
-              </TouchableHighlight>
-            </View>
-          </>
-        </Modal>
-
-        <View>
-          <View style={styles.card}>
-            <Text style={styles.title}>TruckMiles</Text>
-            <Text style={styles.titleYR}>
-              <FontAwesome name="copyright" size={12} color="black" />
-              _2020
-            </Text>
-
-            <View style={styles.logoNbtn}>
-              <Image
-                style={styles.image}
-                source={require("../../assets/tm.png")}
+              <Checkbox
+                value="RadioBTN"
+                color={colors.white}
+                status={unchecked ? "checked" : "unchecked"}
+                onPress={() => {setChecked(!unchecked); settoGPS}}
               />
-
-              <TouchableHighlight style={styles.startTripBTN}>
-                <AppButton
-                  onPress={() => setModalVisible(true)}
-                  title="Start Trip"
-                  style={styles.startTripBTN}
-                  //onPress={console.log("button tapped")}
-                />
-              </TouchableHighlight>
+              {/* if (!unchecked) {(TextHolder = "")} else TextHolder = "Hi"; */}
             </View>
-            <Text style={styles.descriptionPoweredBy}>
+            {/* <CupertinoRadio1 style={styles.cupertinoRadio1}></CupertinoRadio1>*/}
+            <Text style={styles.titleTrip}>Where we heading?</Text>
+
+            <AppTextInput
+              name="input1"
+              style={styles.input3}
+              autoCapitalize="none"
+              autoCorrect={false}
+              icon="map"
+              // value = {loc}
+              // onChangeText={handleChange("password")}
+              placeholder="org ex:19145"
+              //secureTextEntry
+              //textContentType="number"
+            >
+              <Location />
+            </AppTextInput>
+            <View></View>
+            <AppTextInput
+              style={styles.input3}
+              autoCapitalize="none"
+              autoCorrect={false}
+              icon="map"
+              // onChangeText={handleChange("password")}
+              placeholder="#2 ex: Hou,TX"
+              //secureTextEntry
+              //textContentType="text"
+            ></AppTextInput>
+
+            <View style={styles.switchRow}>
+              <Switch
+                value={false}
+                trackColor={{
+                  true: "rgba(227,45,45,1)",
+                  false: "rgba(0,0,0,7)",
+                }}
+                style={styles.switch1}
+              ></Switch>
+              <Text>Avoid Tolls</Text>
+
+              <Switch
+                value={true}
+                trackColor={{
+                  true: "rgba(227,45,45,1)",
+                  false: "rgba(0,0,0,1)",
+                }}
+                style={styles.switch1}
+              ></Switch>
+              <Text>Close Border</Text>
+            </View>
+
+            <AppPicker
+              selectedItem={rtMethod}
+              onSelectItem={(item) => setrtMethod(item)}
+              items={rtMethods}
+              icon="apps"
+              placeholder="Route Method"
+            ></AppPicker>
+
+            <Text style={styles.descriptionPoweredByTP}>
               Powered by ProMiles Software Develpment Corp
             </Text>
+
+            <TouchableHighlight style={styles.runTripBTN}>
+              <AppButton
+                onPress={() => {
+                  setModalVisible(!modalVisible);
+                }}
+                title="Run Trip"
+              />
+            </TouchableHighlight>
           </View>
+        </>
+      </Modal>
+
+      <View>
+        <View style={styles.card}>
+          <Text style={styles.title}>TruckMiles</Text>
+          <Text style={styles.titleYR}>
+            <FontAwesome name="copyright" size={12} color="black" />
+            _2020
+          </Text>
+
+          <View style={styles.logoNbtn}>
+            <Image
+              style={styles.image}
+              source={require("../../assets/tm.png")}
+            />
+
+            <TouchableHighlight style={styles.startTripBTN}>
+              <AppButton
+                onPress={() => setModalVisible(true)}
+                title="Start Trip"
+                style={styles.startTripBTN}
+                //onPress={console.log("button tapped")}
+              />
+            </TouchableHighlight>
+          </View>
+          <Text style={styles.descriptionPoweredBy}>
+            Powered by ProMiles Software Develpment Corp
+          </Text>
         </View>
-      </>
-    )
+      </View>
+    </>
   );
 };
 
@@ -332,10 +336,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
   },
-  titleTripTP: {
+  titleTrip: {
     position: "absolute",
-    paddingLeft: 65,
-    marginTop: 5,
+    paddingLeft: 100,
+    marginTop: 25,
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 20,
