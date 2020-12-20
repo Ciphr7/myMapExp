@@ -91,13 +91,13 @@ const TripStarter = () => {
               autoCapitalize="none"
               autoCorrect={false}
               icon="map"
-              // value = {loc}
+              value = "soon bitch"
               // onChangeText={handleChange("password")}
               placeholder="org ex:19145"
               //secureTextEntry
               //textContentType="number"
             >
-              <Location />
+            
             </AppTextInput>
             <View></View>
             <AppTextInput
@@ -314,7 +314,7 @@ const styles = StyleSheet.create({
     width: width - 90,
     // paddingLeft: 100,
     //marginBottom: 5,
-    marginTop: -40,
+    marginTop: 10,
   },
   switchRow: {
     height: 35,
